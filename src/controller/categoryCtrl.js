@@ -4,6 +4,7 @@ const JWT = require("jsonwebtoken");
 const path = require("path");
 const fs = require("fs");
 const Category = require("../model/categoryModel")
+const Image = require('../model/imgModel')
 cloudinary.config({
     cloud_name: process.env.ClOUD_NAME,
     api_key: process.env.ClOUD_API_KEY,
@@ -15,9 +16,9 @@ const removeTempFile = (path) => {
     })
 }
 
-
 const categoryCtrl = {
     addCategoty: async (req, res) => {
+        console.log(req.files)
         try {
             const token = req.headers.token;
             const { title } = req.body;
